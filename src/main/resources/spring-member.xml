@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName"
+			value="com.mysql.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql://localhost/bombombom?characterEncoding=utf8&amp;serverTimezone=UTC" />
+		<property name="username" value="springproject" />
+		<property name="password" value="spring4" />
+	</bean>
+	<bean id="jdbcTemplate"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg ref="dataSource"></constructor-arg>
+	</bean>
+	<bean id="memberDao" class="member.MemberDao"></bean>
+	<bean id="subjectDao" class="subject.SubjectDao"></bean>
+	<bean id="subbasketDao" class="subbasket.SubbasketDao"></bean>
+	<bean id="timeoverlapService" class="service.TimeOverlapService"></bean>
+	<bean id="timeoverlapDao" class="timeoverlap.TimeOverlapDao"></bean>
+	<bean id="timetableDao" class="timetable.TimeTableDao"></bean>
+	<bean id="authService" class="service.AuthService"></bean>
+	<bean id="settingDao" class="setting.SettingDao"></bean>
+	<bean id="homeController" class="com.project.sfc.HomeController"></bean>
+</beans>
